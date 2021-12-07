@@ -16,5 +16,6 @@ Button.defaultProps = { color: 'PINK' };
 const ButtonStyled = styled.button<{ colorValue: string }>`
   display: block;
   height: 30px;
+  border: solid 1px;
   background-color: ${({ colorValue }) => colorValue};
 `;
