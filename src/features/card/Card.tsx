@@ -1,14 +1,23 @@
 import styled from '@emotion/styled';
 import { Button } from '@src/components/button/Button';
 
-export function Card() {
+export interface ICard {
+  id: string;
+  header: string;
+  src: string;
+  onClick: (id: string) => void;
+}
+
+export function Card({ id, header, src, onClick }: ICard) {
   const handleCardClick = () => {
-    console.log('clicked by card');
+    console.log('clicked by card', id);
+    onClick(id);
   };
   return (
     <CardStyled>
-      <CardHeader>Template Card</CardHeader>
-      <Button label={'cardText'} onClick={handleCardClick} />
+      <CardHeader>{header}</CardHeader>
+      <CardImage src={src} alt={header} />
+      <Button label={'카드'} onClick={handleCardClick} />
     </CardStyled>
   );
 }
@@ -24,5 +33,11 @@ const CardStyled = styled.div`
 `;
 
 const CardHeader = styled.span`
+  padding: 0 0 10px 0;
+`;
+
+const CardImage = styled.img`
+  width: 100px;
+  height: 100px;
   padding: 0 0 10px 0;
 `;
